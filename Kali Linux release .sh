@@ -7,8 +7,10 @@ printf "%b\n\n" "${RED}${BOLD}=====================================
 =====================================${RESET}"
 attempts=0
 while [ $attempts -lt 3 ]; do
-  printf "%b" "${CYAN}kali login: ${RESET}"; read login_name
-  printf "%b" "${CYAN}Password: ${RESET}"; stty -echo; read login_pass; stty echo; printf "\n"
+  printf "%b" "${CYAN}kali login: ${RESET}"
+  read login_name < /dev/tty
+  printf "%b" "${CYAN}Password: ${RESET}"
+  read login_pass < /dev/tty
   [ "$login_name" = "kali" ] && [ "$login_pass" = "kali" ] && break
   attempts=$((attempts+1)); printf "%b\n" "${RED}Login incorrect${RESET}"
 done
@@ -21,7 +23,7 @@ printf "%b\n" "${BOLD}Tools menu (real, text-based — GUI apps can't run in iSH
 echo "  1) w3m   - text-based web browser (google.com etc.)"
 echo "  2) nmap  - network scanner"
 echo "  3) exit"
-printf "%b" "${CYAN}Select: ${RESET}"; read choice
+printf "%b" "${CYAN}Select: ${RESET}"; read choice < /dev/tty
 case "$choice" in
   1) w3m google.com ;;
   2) nmap -sV localhost ;;
