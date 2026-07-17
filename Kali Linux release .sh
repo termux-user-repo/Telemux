@@ -1,7 +1,10 @@
+# im lowkey "kali"
+
 apk update && apk add neofetch w3m nmap && cat > ~/kalifetch.sh << 'SCRIPT'
 #!/bin/sh
 RED="\033[1;31m"; GREEN="\033[1;32m"; CYAN="\033[1;36m"; BOLD="\033[1m"; RESET="\033[0m"
 clear
+while IFS= read -r -t 0.1 _junk < /dev/tty 2>/dev/null; do :; done
 printf "%b\n\n" "${RED}${BOLD}=====================================
         KALI LINUX (iSH build)
 =====================================${RESET}"
@@ -30,4 +33,4 @@ case "$choice" in
   *) echo "Bye." ;;
 esac
 SCRIPT
-chmod +x ~/kalifetch.sh && ~/kalifetch.sh
+chmod +x ~/kalifetch.sh
